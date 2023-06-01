@@ -7,8 +7,9 @@ joystickbit.onButtonEvent(joystickbit.JoystickBitPin.P13, joystickbit.ButtonType
 joystickbit.onButtonEvent(joystickbit.JoystickBitPin.P12, joystickbit.ButtonType.down, function () {
     basic.showString("frein")
 })
+radio.setGroup(1)
 basic.forever(function () {
-	
+    radio.sendNumber(joystickbit.getRockerValue(joystickbit.rockerType.X))
 })
 basic.forever(function () {
     if (joystickbit.getRockerValue(joystickbit.rockerType.X) < 500) {
