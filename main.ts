@@ -1,21 +1,17 @@
 joystickbit.onButtonEvent(joystickbit.JoystickBitPin.P14, joystickbit.ButtonType.down, function () {
     radio.sendString("Boost")
 })
+input.onButtonPressed(Button.A, function () {
+    radio.sendString("CG")
+})
 joystickbit.onButtonEvent(joystickbit.JoystickBitPin.P15, joystickbit.ButtonType.down, function () {
     radio.sendString("reculer")
 })
 radio.onReceivedString(function (receivedString) {
-    if (receivedString == "Obstacle") {
-        basic.showLeds(`
-            . # . # .
-            . # . # .
-            . . . . .
-            . # # # .
-            # . . . #
-            `)
-        joystickbit.Vibration_Motor(500)
-        basic.clearScreen()
-    }
+	
+})
+input.onButtonPressed(Button.B, function () {
+    radio.sendString("CD")
 })
 joystickbit.onButtonEvent(joystickbit.JoystickBitPin.P13, joystickbit.ButtonType.down, function () {
     radio.sendString("Accelere")
@@ -25,14 +21,11 @@ joystickbit.onButtonEvent(joystickbit.JoystickBitPin.P12, joystickbit.ButtonType
 })
 joystickbit.initJoystickBit()
 radio.setGroup(33)
-radio.setTransmitPower(7)
 basic.forever(function () {
     if (joystickbit.getRockerValue(joystickbit.rockerType.X) < 500) {
         radio.sendString("Droite")
-        radio.sendString("CD")
     }
     if (joystickbit.getRockerValue(joystickbit.rockerType.X) > 700) {
         radio.sendString("Gauche")
-        radio.sendString("CG")
     }
 })
