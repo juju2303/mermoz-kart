@@ -1,6 +1,16 @@
 joystickbit.initJoystickBit()
 radio.setGroup(33)
 basic.forever(function () {
+    if (input.buttonIsPressed(Button.A)) {
+        radio.sendString("CG_a")
+    } else {
+        radio.sendString("CG_b")
+    }
+    if (input.buttonIsPressed(Button.B)) {
+        radio.sendString("CD_a")
+    } else {
+        radio.sendString("CD_b")
+    }
     if (joystickbit.getRockerValue(joystickbit.rockerType.X) < 500) {
         radio.sendString("Droite")
     } else if (joystickbit.getRockerValue(joystickbit.rockerType.X) > 700) {
@@ -13,11 +23,8 @@ basic.forever(function () {
         radio.sendString("Boost")
     } else if (joystickbit.getButton(joystickbit.JoystickBitPin.P12)) {
         radio.sendString("Frein")
-    } else if (input.buttonIsPressed(Button.A)) {
-        radio.sendString("CG")
-    } else if (input.buttonIsPressed(Button.B)) {
-        radio.sendString("CD")
     } else {
         radio.sendString("NUL")
     }
+    joystickbit.initJoystickBit()
 })
