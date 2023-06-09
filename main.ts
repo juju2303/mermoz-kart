@@ -13,8 +13,6 @@ basic.forever(function () {
         radio.sendString("reculer")
     } else if (joystickbit.getButton(joystickbit.JoystickBitPin.P12)) {
         radio.sendString("Frein")
-    } else if (false) {
-    	
     } else {
         radio.sendString("NUL")
     }
